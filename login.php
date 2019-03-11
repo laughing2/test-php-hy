@@ -8,7 +8,6 @@ if($my_username!='') {
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 	$password = md5($password);
-	//$sql = "SELECT * FROM user_info where username='".$username."' and password='".$password."'";
 	$sql = "SELECT * FROM user_name where user_name='".$username."' and user_pass='".$password."'";
 	mysqli_set_charset($conn,'utf8');
 	$result = $conn->query($sql);
@@ -16,7 +15,6 @@ if($my_username!='') {
 	if ($result->num_rows > 0) {
 	    // 输出数据
 	    while($row = $result->fetch_assoc()) {
-	        //echo "id: " . $row["id"]. " - username: " . $row["username"]. " - userrole: " . $row["user_role"]. "<br>";
 	        	$username = $row["user_name"];
 	        	$userrole = $row["user_role"];
 				$userpic  = $row["user_pic_url"];
@@ -29,7 +27,6 @@ if($my_username!='') {
 		$my_user_fullurl .= '/userbm'; 
 		$my_user_fullurl .= '/' . $userpic;
 		
-						//$pre_path = strstr($my_user_fullurl,"world");  
 						$my_user_fullurl = str_replace("column","userbm",$my_user_fullurl);
 						$my_user_fullurl = str_replace("picturebm","userbm",$my_user_fullurl);
 						$my_user_fullurl = str_replace("listenbm","userbm",$my_user_fullurl);
